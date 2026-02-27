@@ -3,231 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Android Pro Mockup</title>
+    <title>Portal Microcamp | Cores Oficiais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-url: url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=1000&q=80');
-            --glass: rgba(255, 255, 255, 0.15);
+            /* Paleta Oficial Microcamp */
+            --mc-purple: #622599;      /* Roxo Principal */
+            --mc-purple-light: #8b44d1; 
+            --mc-green: #28a745;       /* Verde Sucesso/Ação */
+            --mc-green-neon: #39ff14;  /* Verde para detalhes de IA/Tech */
+            --mc-white: #ffffff;
+            --mc-dark: #0f051a;        /* Fundo roxo bem escuro */
+            --text-gray: #b1a1c2;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #0f0f0f;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
+            background-color: var(--mc-dark);
+            color: var(--mc-white);
+            font-family: 'Inter', sans-serif;
+            /* Degradê de fundo com as cores da marca */
+            background-image: 
+                radial-gradient(circle at 50% -20%, var(--mc-purple) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(40, 167, 69, 0.1) 0%, transparent 30%);
+            min-height: 100vh;
+            padding-bottom: 80px;
         }
 
-        /* Moldura do Celular */
-        .device {
-            width: 360px;
-            height: 760px;
-            background: var(--bg-url) center/cover;
-            border: 10px solid #1a1a1a;
-            border-radius: 40px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 100px rgba(0,0,0,0.8);
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        header { text-align: center; padding: 60px 20px; animation: fadeInDown 1s ease; }
+
+        .logo {
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            letter-spacing: -1px;
+            color: var(--mc-white);
+            text-shadow: 0 0 20px rgba(139, 68, 209, 0.5);
+            margin-bottom: 10px;
         }
 
-        /* Status Bar Alinhada */
-        .status-bar {
-            height: 40px;
-            padding: 0 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            font-weight: 600;
-            z-index: 20;
+        .logo span { color: var(--mc-green); }
+
+        .tagline { 
+            color: var(--mc-green); 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
         }
 
-        /* Widget Centralizado */
-        .search-container {
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .google-bar {
-            width: 100%;
-            height: 48px;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
+        .section-title {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.75rem;
+            color: var(--mc-white);
+            margin: 50px 0 25px;
             display: flex;
             align-items: center;
-            padding: 0 15px;
-            font-size: 14px;
-            border: 1px solid rgba(255,255,255,0.1);
+            gap: 15px;
+            letter-spacing: 2px;
+            opacity: 0.8;
         }
 
-        /* Grid de Apps - Corrigindo o Alinhamento */
-        .home-grid {
-            flex: 1;
+        .section-title::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(90deg, var(--mc-purple), transparent);
+        }
+
+        .grid-portal {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 90px;
-            gap: 15px 10px;
-            padding: 10px 15px;
-            justify-items: center; /* Centraliza horizontalmente */
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
         }
 
-        .app-item {
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(139, 68, 209, 0.2);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            width: 70px;
+            gap: 12px;
+            backdrop-filter: blur(12px);
         }
 
-        .app-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            background: white;
-            object-fit: contain;
-            padding: 8px; /* Espaço para o ícone não encostar na borda */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.1s;
+        /* Hover Principal com Verde e Roxo */
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(139, 68, 209, 0.1);
+            border-color: var(--mc-green);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(40, 167, 69, 0.3);
         }
 
-        .app-item:active .app-icon { transform: scale(0.9); }
-
-        .app-label {
-            margin-top: 6px;
-            font-size: 11px;
-            text-align: center;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
-            color: #fff;
+        .card i { 
+            font-size: 2.2rem; 
+            color: var(--mc-green); 
+            margin-bottom: 5px;
         }
 
-        /* Gaveta de Apps (App Drawer) */
-        .drawer {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            height: 90%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(25px);
-            border-radius: 30px 30px 0 0;
-            transition: bottom 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
-            z-index: 100;
-            padding: 40px 20px;
-            overflow-y: auto;
+        .card h3 { 
+            font-family: 'Syncopate', sans-serif; 
+            font-size: 1rem; 
+            color: var(--mc-white);
         }
 
-        .drawer.open { bottom: 0; }
+        .card p { font-size: 0.85rem; color: var(--text-gray); }
 
-        .drawer-handle {
-            width: 40px;
-            height: 4px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 2px;
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            cursor: pointer;
+        /* Badge Especial MyBox em Roxo Vibrante */
+        .badge-mybox {
+            align-self: flex-start;
+            background: var(--mc-purple);
+            color: white;
+            font-size: 0.6rem; 
+            padding: 4px 12px; 
+            border-radius: 4px; 
+            font-weight: 800;
+            margin-bottom: 10px;
+            border: 1px solid var(--mc-purple-light);
         }
 
-        /* Barra de Navegação Inferior */
-        .nav-bar {
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .nav-indicator {
-            width: 100px;
-            height: 4px;
-            background: white;
-            border-radius: 2px;
-            opacity: 0.6;
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        .animate-card { animation: fadeInUp 0.6s ease forwards; opacity: 0; }
     </style>
 </head>
 <body>
 
-    <div class="device">
-        <div class="status-bar">
-            <span id="clock">12:00</span>
-            <span>📶 🔋</span>
-        </div>
+<div class="container">
+    <header>
+        <div class="logo">MICRO<span>CAMP</span></div>
+        <div class="tagline">Experiência que Transforma</div>
+    </header>
 
-        <div class="search-container">
-            <div class="google-bar">🔍 Pesquisar apps...</div>
-        </div>
+    <div class="section-title">FORMAÇÃO PROFISSIONAL</div>
+    <div class="grid-portal">
+        <a href="#" class="card animate-card" style="animation-delay: 0.1s;">
+            <i class="fas fa-brain"></i>
+            <h3>Informática e IA</h3>
+            <p>Capacidade de resolver problemas e aplicar inteligência artificial em processos e negócios.</p>
+        </a>
 
-        <div class="home-grid" id="homeGrid">
-            </div>
+        <a href="#" class="card animate-card" style="animation-delay: 0.2s;">
+            <i class="fas fa-gamepad"></i>
+            <h3>Games</h3>
+            <p>Domine ferramentas do mercado e desenvolva projetos reais para seu portfólio profissional.</p>
+        </a>
 
-        <div class="drawer" id="appDrawer">
-            <div class="drawer-handle" onclick="toggleDrawer()"></div>
-            <div class="home-grid" id="drawerGrid">
-                </div>
-        </div>
+        <a href="#" class="card animate-card" style="animation-delay: 0.3s;">
+            <i class="fas fa-pen-nib"></i>
+            <h3>Design Gráfico</h3>
+            <p>Revele seu talento criativo transformando ideias em projetos visuais de alto impacto.</p>
+        </a>
 
-        <div class="nav-bar" onclick="toggleDrawer()">
-            <div class="nav-indicator"></div>
-        </div>
+        <a href="#" class="card animate-card" style="animation-delay: 0.4s;">
+            <i class="fas fa-language"></i>
+            <h3>Inglês</h3>
+            <p>Metodologia dinâmica e flexível que se conecta totalmente à sua rotina e carreira.</p>
+        </a>
+
+        <a href="#" class="card animate-card" style="animation-delay: 0.5s;">
+            <i class="fas fa-comment-dots"></i>
+            <h3>Espanhol</h3>
+            <p>Expanda suas fronteiras profissionais com aprendizado focado na fluência e prática real.</p>
+        </a>
+
+        <a href="#" class="card animate-card" style="animation-delay: 0.6s;">
+            <i class="fas fa-microchip"></i>
+            <h3>Hardware e Robótica</h3>
+            <p>Montagem e criação de projetos físicos que conectam hardware e inovação.</p>
+        </a>
     </div>
 
-    <script>
-        const apps = [
-            { name: 'Google', icon: 'https://cdn-icons-png.flaticon.com/512/2991/2991148.png', url: 'https://www.google.com' },
-            { name: 'YouTube', icon: 'https://cdn-icons-png.flaticon.com/512/1384/1384060.png', url: 'https://www.youtube.com' },
-            { name: 'Instagram', icon: 'https://cdn-icons-png.flaticon.com/512/174/174855.png', url: 'https://www.instagram.com' },
-            { name: 'Facebook', icon: 'https://cdn-icons-png.flaticon.com/512/733/733547.png', url: 'https://www.facebook.com' },
-            { name: 'Spotify', icon: 'https://cdn-icons-png.flaticon.com/512/174/174872.png', url: 'https://www.spotify.com' },
-            { name: 'TikTok', icon: 'https://cdn-icons-png.flaticon.com/512/3046/3046121.png', url: 'https://www.tiktok.com' },
-            { name: 'Gmail', icon: 'https://cdn-icons-png.flaticon.com/512/732/732200.png', url: 'https://mail.google.com' },
-            { name: 'Steam', icon: 'https://cdn-icons-png.flaticon.com/512/888/888868.png', url: 'https://store.steampowered.com' },
-            { name: 'Epic Games', icon: 'https://cdn-icons-png.flaticon.com/512/5968/5968311.png', url: 'https://www.epicgames.com' },
-            { name: 'PSN', icon: 'https://cdn-icons-png.flaticon.com/512/588/588302.png', url: 'https://www.playstation.com' },
-            { name: 'Xbox', icon: 'https://cdn-icons-png.flaticon.com/512/888/888882.png', url: 'https://www.xbox.com' },
-            { name: 'Outlook', icon: 'https://cdn-icons-png.flaticon.com/512/732/732225.png', url: 'https://outlook.live.com' }
-        ];
+    <div class="section-title">SECRETARIA E SUPORTE</div>
+    <div class="grid-portal">
+        <a href="#" class="card animate-card" style="animation-delay: 0.7s;">
+            <div class="badge-mybox">MYBOX EXCLUSIVO</div>
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Material de Apoio</h3>
+            <p>Sistema de aprendizagem intuitivo com conteúdos e exercícios práticos.</p>
+        </a>
 
-        function createAppElement(app) {
-            const a = document.createElement('a');
-            a.className = 'app-item';
-            a.href = app.url;
-            a.target = '_blank';
-            a.innerHTML = `<img src="${app.icon}" class="app-icon"><span class="app-label">${app.name}</span>`;
-            return a;
-        }
+        <a href="#" class="card animate-card" style="animation-delay: 0.8s;">
+            <i class="fas fa-qrcode"></i>
+            <h3>Check-in</h3>
+            <p>Registre sua presença e valide seu aprendizado prático em sala de aula.</p>
+        </a>
 
-        // Preencher Home (primeiros 4) e Gaveta (todos)
-        const homeGrid = document.getElementById('homeGrid');
-        const drawerGrid = document.getElementById('drawerGrid');
+        <a href="#" class="card animate-card" style="animation-delay: 0.9s;">
+            <i class="fas fa-hourglass-half"></i>
+            <h3>Tempo de Curso</h3>
+            <p>Acompanhe sua trajetória e evolução em nossa estrutura de ponta.</p>
+        </a>
 
-        apps.forEach((app, index) => {
-            if(index < 8) homeGrid.appendChild(createAppElement(app)); // Apenas 8 na home
-            drawerGrid.appendChild(createAppElement(app)); // Todos na gaveta
-        });
+        <a href="#" class="card animate-card" style="animation-delay: 1.0s;">
+            <i class="fas fa-file-alt"></i>
+            <h3>Contratos</h3>
+            <p>Acesse documentos e informações contratuais com total transparência.</p>
+        </a>
 
-        // Alternar Gaveta
-        function toggleDrawer() {
-            document.getElementById('appDrawer').classList.toggle('open');
-        }
+        <a href="#" class="card animate-card" style="animation-delay: 1.1s;">
+            <i class="fas fa-star"></i>
+            <h3>Cursos Gratuitos</h3>
+            <p>Workshops e conteúdos extras para potencializar seu currículo.</p>
+        </a>
 
-        // Relógio
-        function updateClock() {
-            const n = new Date();
-            document.getElementById('clock').innerText = n.getHours().toString().padStart(2, '0') + ":" + n.getMinutes().toString().padStart(2, '0');
-        }
-        setInterval(updateClock, 1000); updateClock();
-    </script>
+        <a href="#" class="card animate-card" style="animation-delay: 1.2s;">
+            <i class="fas fa-certificate"></i>
+            <h3>Complementares</h3>
+            <p>Certificações extras que aproximam você do mercado de trabalho real.</p>
+        </a>
+    </div>
+</div>
+
 </body>
 </html>
