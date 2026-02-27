@@ -9,7 +9,6 @@
     
     <style>
         :root {
-            /* Mantendo sua paleta oficial */
             --mc-purple: #622599;
             --mc-purple-light: #8b44d1; 
             --mc-green: #28a745;        
@@ -82,6 +81,7 @@
             gap: 20px;
         }
 
+        /* Estilo atualizado para aceitar links <a> */
         .card-modulo {
             background: var(--glass);
             border: 1px solid rgba(139, 68, 209, 0.2);
@@ -91,12 +91,16 @@
             backdrop-filter: blur(12px);
             position: relative;
             overflow: hidden;
+            text-decoration: none; /* Remove sublinhado de link */
+            display: block; /* Garante que o link ocupe o espaço do card */
+            color: var(--mc-white); /* Mantém o texto branco */
         }
 
         .card-modulo:hover {
             border-color: var(--mc-green);
             background: rgba(139, 68, 209, 0.1);
             transform: scale(1.02);
+            cursor: pointer;
         }
 
         .modulo-number {
@@ -140,13 +144,12 @@
     <div class="section-title">CONTEÚDO PROGRAMÁTICO</div>
 
     <div class="grid-modulos">
-	<a href="m01a01.html" class="aula-item" style="animation-delay: 0.1s;">
-        <div class="card-modulo animate" style="animation-delay: 0.1s;">
+        <a href="eletronica.html" class="card-modulo animate" style="animation-delay: 0.1s;">
             <span class="modulo-number">MÓDULO 01</span>
             <i class="fas fa-bolt"></i>
             <h3>Eletrônica</h3>
-        </div>
-</a>
+        </a>
+
         <div class="card-modulo animate" style="animation-delay: 0.15s;">
             <span class="modulo-number">MÓDULO 02</span>
             <i class="fas fa-microchip"></i>
