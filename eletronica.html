@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eletrônica | Módulo 01</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --mc-purple: #622599;
+            --mc-purple-light: #8b44d1; 
+            --mc-green: #28a745;        
+            --mc-white: #ffffff;
+            --mc-dark: #0f051a;        
+            --text-gray: #b1a1c2;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--mc-dark);
+            color: var(--mc-white);
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% -20%, var(--mc-purple) 0%, transparent 50%);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        header { padding: 40px 0; animation: fadeInDown 0.8s ease; }
+
+        .btn-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .btn-voltar:hover { color: var(--mc-green); }
+
+        .title-area { border-left: 4px solid var(--mc-green); padding-left: 20px; }
+        
+        h1 { 
+            font-family: 'Syncopate', sans-serif; 
+            font-size: 1.8rem; 
+            margin-bottom: 5px;
+        }
+        
+        .subtitle { color: var(--mc-green); font-weight: 800; font-size: 0.8rem; letter-spacing: 3px; }
+
+        .aulas-list { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
+
+        .aula-item {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            animation: fadeInLeft 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .aula-item:hover {
+            background: rgba(139, 68, 209, 0.15);
+            border-color: var(--mc-purple-light);
+            transform: translateX(10px);
+        }
+
+        .aula-info { display: flex; align-items: center; gap: 20px; }
+        
+        .aula-numero {
+            background: var(--mc-purple);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .aula-nome { font-weight: 600; letter-spacing: 0.5px; }
+
+        .status-icon { color: var(--mc-green); font-size: 1.2rem; opacity: 0.5; }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <a href="robotica.html" class="btn-voltar"><i class="fas fa-chevron-left"></i> Voltar aos Módulos</a>
+        <div class="title-area">
+            <div class="subtitle">MÓDULO 01</div>
+            <h1>ELETRÔNICA</h1>
+        </div>
+    </header>
+
+    <div class="aulas-list">
+        <a href="m01a01.html" class="aula-item" style="animation-delay: 0.1s;">
+            <div class="aula-info">
+                <div class="aula-numero">01</div>
+                <div class="aula-nome">Energia</div>
+            </div>
+            <i class="fas fa-play-circle status-icon"></i>
+        </a>
+
+        <script>
+            const aulas = ["Assunto", "Assunto", "Assunto", "Assunto", "Assunto", "Assunto", "Assunto", "Assunto", "Assunto", "Assunto", "Assunto"];
+            const listContainer = document.querySelector('.aulas-list');
+            
+            aulas.forEach((assunto, index) => {
+                const num = (index + 2).toString().padStart(2, '0');
+                const delay = (index + 2) * 0.1;
+                
+                listContainer.innerHTML += `
+                    <a href="#" class="aula-item" style="animation-delay: ${delay}s;">
+                        <div class="aula-info">
+                            <div class="aula-numero">${num}</div>
+                            <div class="aula-nome">${assunto}</div>
+                        </div>
+                        <i class="fas fa-lock status-icon" style="font-size: 1rem;"></i>
+                    </a>
+                `;
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>
